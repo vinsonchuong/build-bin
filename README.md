@@ -1,8 +1,7 @@
 # build-bin
 [![Build Status](https://travis-ci.org/vinsonchuong/build-bin.svg?branch=master)](https://travis-ci.org/vinsonchuong/build-bin)
-[![Code Climate](https://codeclimate.com/github/vinsonchuong/build-bin/badges/gpa.svg)](https://codeclimate.com/github/vinsonchuong/build-bin)
 
-Prints Hello World!
+A zero-configuration plugin system for building assets for production release
 
 ## Installing
 `build-bin` is available as an
@@ -11,7 +10,7 @@ Prints Hello World!
 ## Usage
 From the command line, run:
 ```bash
-build-bin
+build
 ```
 
 ## Development

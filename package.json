@@ -1,8 +1,8 @@
 {
   "name": "build-bin",
   "version": "0.0.1",
-  "description": "",
-  "keywords": [],
+  "description": "A zero-configuration plugin system for building assets for production release",
+  "keywords": ["assets", "esnext", "compile", "production", "minify"],
   "homepage": "https://github.com/vinsonchuong/build-bin",
   "bugs": "https://github.com/vinsonchuong/build-bin/issues",
   "license": "MIT",
@@ -12,9 +12,8 @@
     "README.md",
     "src"
   ],
-  "main": "src/index.js",
   "bin": {
-    "build-bin": "src/bin/build-bin.js"
+    "build": "src/bin/build.js"
   },
   "repository": {
     "type": "git",
@@ -25,11 +24,11 @@
     "test": "eslint && jasmine"
   },
   "dependencies": {
-    "node-promise-es6": "^0.3.2"
   },
   "devDependencies": {
     "dist-es6": "^0.2.2",
     "jasmine-es6": "^0.2.1",
-    "eslint-defaults": "^0.3.0"
+    "eslint-defaults": "^0.3.0",
+    "directory-helpers": "^0.1.1"
   }
 }
