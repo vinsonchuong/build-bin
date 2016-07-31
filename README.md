@@ -8,10 +8,26 @@ A zero-configuration plugin system for building assets for production release
 [npm package](https://www.npmjs.com/package/build-bin).
 
 ## Usage
+Add `build-bin` to the `package.json` as follows:
+```json
+{
+  "name": "project",
+  "private": true,
+  "scripts": {
+    "build": "build"
+  },
+  "devDependencies": {
+    "build-bin": "^0.0.1"
+  }
+}
+```
+
 From the command line, run:
 ```bash
-build
+npm run build
 ```
+
+## Writing Plugins
 
 ## Development
 ### Getting Started
