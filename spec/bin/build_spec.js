@@ -1,4 +1,16 @@
+/* eslint-disable no-invalid-this */
 import Directory from 'directory-helpers';
+
+async function writePlugin(name, stage) {
+  await this.write({
+    [`node_modules/${name}/package.json`]: {
+      name, stage
+    },
+    [`node_modules/${name}/index.js`]: `
+      console.log('${name}');
+    `
+  });
+}
 
 function withProject(test) {
   return async () => {
@@ -12,7 +24,7 @@ function withProject(test) {
 }
 
 describe('build', () => {
-  it('detects plugins', withProject(async (project) => {
+  it('detects and sorts plugins by stage', withProject(async (project) => {
     await project.write({
       'package.json': {
         name: 'project',
@@ -20,29 +32,20 @@ describe('build', () => {
           build: 'build'
         },
         devDependencies: {
-          "build-esnext": "^0.0.1",
-          "build-styles": "^0.0.1"
+          'build-esnext': '^0.0.1',
+          'build-compress': '^0.0.1',
+          'build-styles': '^0.0.1'
         }
-      },
-
-      'node_modules/build-esnext/package.json': {
-        name: 'build-esnext'
-      },
-      'node_modules/build-esnext/index.js': `
-        console.log('build-esnext');
-      `,
-
-      'node_modules/build-styles/package.json': {
-        name: 'build-styles'
-      },
-      'node_modules/build-styles/index.js': `
-        console.log('build-styles');
-      `
+      }
     });
+    await project::writePlugin('build-esnext', 'compile');
+    await project::writePlugin('build-styles', 'compile');
+    await project::writePlugin('build-compress', 'compress');
 
     expect(await project.exec('build')).toBe([
       'build-esnext',
-      'build-styles'
+      'build-styles',
+      'build-compress'
     ].join('\n'));
   }));
 });
