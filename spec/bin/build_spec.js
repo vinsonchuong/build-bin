@@ -1,4 +1,3 @@
-/* eslint-disable no-invalid-this */
 import Directory from 'directory-helpers';
 
 async function writePlugin(name, stage) {

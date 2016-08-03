@@ -30,6 +30,6 @@
   "devDependencies": {
     "dist-es6": "^0.2.2",
     "jasmine-es6": "^0.2.1",
-    "eslint-defaults": "^0.3.0"
+    "eslint-defaults": "^0.3.1"
   }
 }
