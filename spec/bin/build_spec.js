@@ -11,6 +11,11 @@ async function writePlugin(name, stage) {
   });
 }
 
+async function build() {
+  const output = await this.exec('npm', ['run', 'build']);
+  return output.split('\n\n')[1].split('\n');
+}
+
 function withProject(test) {
   return async () => {
     const directory = new Directory('project');
@@ -41,10 +46,10 @@ describe('build', () => {
     await project::writePlugin('build-styles', 'compile');
     await project::writePlugin('build-compress', 'compress');
 
-    expect(await project.exec('build')).toBe([
+    expect(await project::build()).toEqual([
       'build-esnext',
       'build-styles',
       'build-compress'
-    ].join('\n'));
+    ]);
   }));
 });
