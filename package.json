@@ -1,6 +1,6 @@
 {
   "name": "build-bin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A zero-configuration plugin system for building assets for production release",
   "keywords": ["assets", "esnext", "compile", "production", "minify"],
   "homepage": "https://github.com/vinsonchuong/build-bin",
