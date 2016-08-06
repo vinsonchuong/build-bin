@@ -54,4 +54,25 @@ describe('build', () => {
       'build-compress'
     ]);
   }));
+
+  it('ignores plugins that do not specify a stage', withProject(async (project) => {
+    await project.write({
+      'package.json': {
+        name: 'project',
+        scripts: {
+          build: 'build'
+        },
+        devDependencies: {
+          'build-esnext': '^0.0.1',
+          'build-styles': '^0.0.1'
+        }
+      }
+    });
+    await project::writePlugin('build-esnext', 'compile');
+    await project::writePlugin('build-styles');
+
+    expect(await project::build()).toEqual([
+      'build-esnext'
+    ]);
+  }));
 });

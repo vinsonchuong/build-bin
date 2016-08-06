@@ -15,7 +15,9 @@ run(async () => {
   };
   for (const plugin of plugins) {
     const {stage} = require(await project.resolve(`${plugin}/package.json`));
-    pluginTypes[stage].push(plugin);
+    if (stage in pluginTypes) {
+      pluginTypes[stage].push(plugin);
+    }
   }
   for (const pluginGroup of Object.values(pluginTypes)) {
     for (const plugin of pluginGroup) {

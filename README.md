@@ -17,7 +17,7 @@ Add `build-bin` to the `package.json` as follows:
     "build": "build"
   },
   "devDependencies": {
-    "build-bin": "^0.0.1"
+    "build-bin": "^0.0.2"
   }
 }
 ```
