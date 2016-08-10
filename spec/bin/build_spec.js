@@ -6,7 +6,7 @@ async function writePlugin(name, stage) {
       name, stage
     },
     [`node_modules/${name}/index.js`]: `
-      module.exports = function() {
+      exports.default = function() {
         console.log('${name}');
       };
     `
