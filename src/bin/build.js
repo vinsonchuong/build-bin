@@ -21,7 +21,7 @@ run(async () => {
   }
   for (const pluginGroup of Object.values(pluginTypes)) {
     for (const plugin of pluginGroup) {
-      require(await project.resolve(plugin)).default();
+      await require(await project.resolve(plugin)).default();
     }
   }
 });
