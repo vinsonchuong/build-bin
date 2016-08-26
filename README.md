@@ -31,13 +31,22 @@ npm run build
 ```
 
 ## Plugins
+* [build-html](https://github.com/vinsonchuong/build-html) compiles and minifies
+  an HTML entry point.
 * [build-esnext](https://github.com/vinsonchuong/build-esnext) compiles,
   concatenates, and minifies ES.next modules.
+* [build-gzip](https://github.com/vinsonchuong/build-gzip) gzips all static
+  assets after compilation.
+* [build-cloudfoundry](https://github.com/vinsonchuong/build-cloudfoundry)
+  configures a static frontend for deployment on Cloud Foundry.
+* [build-heroku](https://github.com/vinsonchuong/build-heroku)
+  configures a static frontend for deployment on Heroku.
 
 ## Writing Plugins
 Plugins must have a `name` that starts with `build-` and declare a `stage` in
-`package.json`. Valid stages include `compile` and `compress`. All plugins from
-the `compile` stage are run first, followed by plugins in the `compress` stage.
+`package.json`. Valid stages include `compile`, `compress`, and `config`. All
+plugins from the `compile` stage are run first, followed by plugins in the
+`compress` stage, and finally, followed by plugins in the `config` stage.
 
 ```json
 {

@@ -38,18 +38,21 @@ describe('build', () => {
         devDependencies: {
           'build-esnext': '^0.0.1',
           'build-compress': '^0.0.1',
-          'build-styles': '^0.0.1'
+          'build-styles': '^0.0.1',
+          'build-deploy': '^0.0.1'
         }
       }
     });
     await project::writePlugin('build-esnext', 'compile');
     await project::writePlugin('build-styles', 'compile');
     await project::writePlugin('build-compress', 'compress');
+    await project::writePlugin('build-deploy', 'config');
 
     expect(await project::build()).toEqual([
       'build-esnext',
       'build-styles',
-      'build-compress'
+      'build-compress',
+      'build-deploy'
     ]);
   }));
 

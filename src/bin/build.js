@@ -13,7 +13,8 @@ run(async () => {
     .filter((dependency) => dependency.startsWith('build-'));
   const pluginTypes = {
     compile: [],
-    compress: []
+    compress: [],
+    config: []
   };
   for (const plugin of plugins) {
     const {stage} = require(await project.resolve(`${plugin}/package.json`));
